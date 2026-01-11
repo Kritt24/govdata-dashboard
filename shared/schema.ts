@@ -9,6 +9,9 @@ export const metrics = pgTable("metrics", {
   value: integer("value").notNull(),
   trend: integer("trend").notNull(), // percentage change
   data: jsonb("data").notNull(), // Series data for charts
+  keyQuestion: text("key_question"),
+  insights: jsonb("insights").default([]),
+  policyImplications: text("policy_implications"),
   lastUpdated: timestamp("last_updated").defaultNow(),
 });
 
