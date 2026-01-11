@@ -40,8 +40,8 @@ export default function Dashboard() {
 
   return (
     <Layout>
-      <div className="max-w-[1100px] mx-auto">
-        <div className="space-y-2 mb-8">
+      <div className="max-w-[1100px] mx-auto w-full">
+        <div className="space-y-2 mb-8 text-left">
           <h1 className="text-4xl font-serif font-bold text-gray-900">
             Analytics Overview
           </h1>
@@ -53,7 +53,7 @@ export default function Dashboard() {
           </p>
         </div>
 
-        <div className="space-y-4 mb-8">
+        <div className="space-y-4 mb-8 text-left">
           <RoleSelector currentRole={role} onRoleChange={(r) => setRole(r as Role)} />
           <p className="text-xs text-gray-400 font-medium">
             Select a perspective to view insights tailored for different audiences.
