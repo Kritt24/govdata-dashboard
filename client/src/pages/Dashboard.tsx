@@ -41,11 +41,11 @@ export default function Dashboard() {
   return (
     <Layout>
       <div className="max-w-[1200px] mx-auto px-6 w-full">
-        <div className="space-y-2 mb-8 text-left">
+        <div className="space-y-2 mb-8 text-center">
           <h1 className="text-4xl font-serif font-bold text-gray-900">
             Analytics Overview
           </h1>
-          <p className="text-gray-500 max-w-2xl text-lg">
+          <p className="text-gray-500 max-w-2xl text-lg mx-auto">
             Data-driven analysis of Aadhaar enrolment, demographic updates, and biometric trends across India.
           </p>
           <p className="text-gray-400 text-sm">
@@ -53,7 +53,7 @@ export default function Dashboard() {
           </p>
         </div>
 
-        <div className="space-y-4 mb-8 text-left">
+        <div className="space-y-4 mb-8 text-center">
           <RoleSelector currentRole={role} onRoleChange={(r) => setRole(r as Role)} />
           <p className="text-xs text-gray-400 font-medium">
             Select a perspective to view insights tailored for different audiences.

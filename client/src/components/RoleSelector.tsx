@@ -15,7 +15,7 @@ export function RoleSelector({ currentRole, onRoleChange }: RoleSelectorProps) {
   ];
 
   return (
-    <div className="mb-10">
+    <div className="mb-10 flex flex-col items-center text-center">
       <h2 className="text-lg font-medium text-gray-600 mb-4 font-serif">Select View Perspective</h2>
       <div className="bg-white p-1.5 rounded-2xl shadow-sm border border-gray-100 inline-flex flex-col sm:flex-row gap-2">
         {roles.map((role) => {
