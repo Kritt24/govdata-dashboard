@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useLocation } from "wouter";
 import { Layout } from "@/components/Layout";
 import { RoleSelector } from "@/components/RoleSelector";
@@ -6,9 +5,10 @@ import { DashboardCard } from "@/components/DashboardCard";
 import { useMetrics } from "@/hooks/use-metrics";
 import { Skeleton } from "@/components/ui/skeleton";
 import { motion } from "framer-motion";
+import { useRoleStore, type Role } from "@/hooks/use-role";
 
 export default function Dashboard() {
-  const [role, setRole] = useState("Government Official");
+  const { role, setRole } = useRoleStore();
   const [, setLocation] = useLocation();
   const { data: metrics, isLoading, error } = useMetrics();
 
@@ -52,7 +52,7 @@ export default function Dashboard() {
         </p>
       </div>
 
-      <RoleSelector currentRole={role} onRoleChange={setRole} />
+      <RoleSelector currentRole={role} onRoleChange={(r) => setRole(r as Role)} />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {metrics?.map((metric, index) => (

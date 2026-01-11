@@ -3,7 +3,7 @@ import { useParams, Link } from "wouter";
 import { Layout } from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowLeft, Lightbulb, HelpCircle, FileText, BarChart3, PieChart } from "lucide-react";
+import { ArrowLeft, Lightbulb, HelpCircle, FileText, BarChart3, PieChart, Database, Clock, Server } from "lucide-react";
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
   LineChart, Line, Legend, PieChart as RePieChart, Pie, Cell 
@@ -11,15 +11,21 @@ import {
 import { api, buildUrl } from "@shared/routes";
 import { motion } from "framer-motion";
 import type { Metric } from "@shared/schema";
+import { useRoleStore } from "@/hooks/use-role";
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
 
 export default function MetricDetail() {
   const { id } = useParams();
+  const { role } = useRoleStore();
   
   const { data: metric, isLoading } = useQuery<Metric>({
     queryKey: [buildUrl(api.metrics.get.path, { id: id! })],
   });
+
+  const isCitizen = role === "Citizen";
+  const isAdmin = role === "Admin (Demo)";
+  const isOfficial = role === "Government Official";
 
   if (isLoading) {
     return (
@@ -158,26 +164,70 @@ export default function MetricDetail() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-900 text-white overflow-hidden border-0 shadow-2xl">
-            <CardHeader className="flex flex-row items-center gap-4">
-              <div className="p-2 bg-gray-800 rounded-lg text-primary">
-                <FileText className="w-5 h-5" />
-              </div>
-              <CardTitle className="text-white">Policy Implications</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-300 leading-relaxed mb-4">
-                {metric.policyImplications}
-              </p>
-              <div className="pt-4 border-t border-gray-800">
-                <p className="text-xs text-gray-500 uppercase tracking-widest font-bold">Recommended Action</p>
-                <p className="text-sm mt-1 text-primary italic font-medium">
-                  "Prioritize infrastructure expansion in regions showing higher than average biometric update failure rates."
+          {!isCitizen && (
+            <Card className="bg-gray-900 text-white overflow-hidden border-0 shadow-2xl">
+              <CardHeader className="flex flex-row items-center gap-4">
+                <div className="p-2 bg-gray-800 rounded-lg text-primary">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <CardTitle className="text-white">Policy Implications</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  {metric.policyImplications}
                 </p>
-              </div>
-            </CardContent>
-          </Card>
+                <div className="pt-4 border-t border-gray-800">
+                  <p className="text-xs text-gray-500 uppercase tracking-widest font-bold">Recommended Action</p>
+                  <p className="text-sm mt-1 text-primary italic font-medium">
+                    "Prioritize infrastructure expansion in regions showing higher than average biometric update failure rates."
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          )}
         </div>
+
+        {/* Admin Section */}
+        {isAdmin && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <Card className="border-t-4 border-t-orange-500">
+              <CardHeader className="flex flex-row items-center gap-4">
+                <div className="p-2 bg-orange-100 rounded-lg text-orange-600">
+                  <Database className="w-5 h-5" />
+                </div>
+                <CardTitle>Admin Metadata & Source</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  <div className="flex items-start gap-3">
+                    <Server className="w-5 h-5 text-gray-400 mt-1" />
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Source Cluster</p>
+                      <p className="text-sm font-medium">UIDAI-PROD-SOUTH-01</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Clock className="w-5 h-5 text-gray-400 mt-1" />
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Last Sync</p>
+                      <p className="text-sm font-medium">{metric.lastUpdated ? new Date(metric.lastUpdated).toLocaleString() : 'N/A'}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Database className="w-5 h-5 text-gray-400 mt-1" />
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Record Count</p>
+                      <p className="text-sm font-medium">1,240,582 records processed</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
       </div>
     </Layout>
   );
