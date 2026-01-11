@@ -40,12 +40,11 @@ export class MemStorage implements IStorage {
         ],
         policyImplications: "Enrolment centers should be prioritized in blocks with less than 90% saturation. Mobile enrolment kits should be deployed for elderly and disabled citizens in rural areas.",
         data: [
-          { name: "Jan", value: 120 },
-          { name: "Feb", value: 132 },
-          { name: "Mar", value: 145 },
-          { name: "Apr", value: 150 },
-          { name: "May", value: 155 },
-          { name: "Jun", value: 162 }
+          { name: "Uttar Pradesh", value: 240 },
+          { name: "Maharashtra", value: 125 },
+          { name: "Bihar", value: 130 },
+          { name: "West Bengal", value: 105 },
+          { name: "Madhya Pradesh", value: 95 }
         ]
       },
       {

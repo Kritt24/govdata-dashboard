@@ -3,7 +3,7 @@ import { useParams, Link } from "wouter";
 import { Layout } from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowLeft, Lightbulb, HelpCircle, FileText, BarChart3, PieChart, Database, Clock, Server } from "lucide-react";
+import { ArrowLeft, Lightbulb, HelpCircle, FileText, BarChart3, PieChart, Database, Clock, Server, Map, TrendingUp } from "lucide-react";
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
   LineChart, Line, Legend, PieChart as RePieChart, Pie, Cell 
@@ -25,7 +25,6 @@ export default function MetricDetail() {
 
   const isCitizen = role === "Citizen";
   const isAdmin = role === "Admin (Demo)";
-  const isOfficial = role === "Government Official";
 
   if (isLoading) {
     return (
@@ -52,6 +51,15 @@ export default function MetricDetail() {
       </div>
     </Layout>
   );
+
+  const timeTrends = [
+    { name: "Jul", value: 45 },
+    { name: "Aug", value: 52 },
+    { name: "Sep", value: 48 },
+    { name: "Oct", value: 61 },
+    { name: "Nov", value: 55 },
+    { name: "Dec", value: 67 }
+  ];
 
   return (
     <Layout>
@@ -87,12 +95,12 @@ export default function MetricDetail() {
         </motion.div>
 
         {/* Charts Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <Card className="overflow-hidden">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-lg">
                 <BarChart3 className="w-4 h-4 text-primary" />
-                Distribution Overview
+                State-wise Comparison (Millions)
               </CardTitle>
             </CardHeader>
             <CardContent className="h-[350px]">
@@ -113,11 +121,54 @@ export default function MetricDetail() {
           <Card className="overflow-hidden">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-lg">
+                <TrendingUp className="w-4 h-4 text-primary" />
+                Time-based Trend (Last 6 Months)
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="h-[350px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={timeTrends}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip 
+                    contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}
+                  />
+                  <Line type="monotone" dataKey="value" stroke="hsl(var(--primary))" strokeWidth={3} dot={{ r: 4, fill: "hsl(var(--primary))" }} />
+                </LineChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Map Placeholder & Category Pie */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <Card className="lg:col-span-2 overflow-hidden">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <Map className="w-4 h-4 text-primary" />
+                Geographic Coverage Analysis
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="flex items-center justify-center bg-gray-50 min-h-[300px]">
+              <div className="text-center text-gray-400 space-y-4">
+                <svg width="200" height="240" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="mx-auto opacity-20">
+                  <path d="M100 0L125 40L180 50L140 90L150 150L100 120L50 150L60 90L20 50L75 40L100 0Z" fill="currentColor"/>
+                </svg>
+                <p className="text-sm font-medium">Interactive Geographic Map View</p>
+                <p className="text-xs">Spatial data distribution across all states and union territories</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="overflow-hidden">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-lg">
                 <PieChart className="w-4 h-4 text-primary" />
                 Category Breakdown
               </CardTitle>
             </CardHeader>
-            <CardContent className="h-[350px]">
+            <CardContent className="h-[300px]">
               <ResponsiveContainer width="100%" height="100%">
                 <RePieChart>
                   <Pie
