@@ -46,7 +46,7 @@ export default function MetricDetail() {
       <div className="text-center py-20">
         <h2 className="text-2xl font-bold">Metric not found</h2>
         <Link href="/">
-          <a className="text-primary hover:underline">Back to Dashboard</a>
+          <div className="text-primary hover:underline cursor-pointer">Back to Overview</div>
         </Link>
       </div>
     </Layout>
@@ -65,10 +65,10 @@ export default function MetricDetail() {
     <Layout>
       <div className="mb-8">
         <Link href="/">
-          <a className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-primary transition-colors mb-6 group">
+          <div className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-primary transition-colors mb-6 group cursor-pointer">
             <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
-            Back to Dashboard
-          </a>
+            Back to Overview
+          </div>
         </Link>
         <h1 className="text-4xl font-serif font-bold text-gray-900">{metric.title}</h1>
       </div>
