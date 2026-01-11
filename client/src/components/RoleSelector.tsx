@@ -27,10 +27,10 @@ export function RoleSelector({ currentRole, onRoleChange }: RoleSelectorProps) {
               key={role.id}
               onClick={() => onRoleChange(role.id)}
               className={cn(
-                "relative flex items-center gap-3 px-6 py-3 rounded-xl transition-all duration-300 ease-out text-sm font-medium",
+                "relative flex items-center gap-3 px-6 py-3 rounded-xl transition-all duration-300 ease-out text-sm font-medium border border-transparent",
                 isSelected 
-                  ? "text-gray-900 shadow-md ring-1 ring-black/5" 
-                  : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
+                  ? "text-primary bg-blue-50/50 border-primary/20 shadow-sm" 
+                  : "text-gray-500 hover:text-gray-900 hover:bg-gray-50 hover:border-gray-200"
               )}
             >
               {isSelected && (
