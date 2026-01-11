@@ -72,13 +72,22 @@ export function Layout({ children }: LayoutProps) {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-          <p>© 2024 Unique Identification Authority of India. All rights reserved.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-primary">Privacy Policy</a>
-            <a href="#" className="hover:text-primary">Terms of Use</a>
-            <a href="#" className="hover:text-primary">Accessibility</a>
+      <footer className="bg-white border-t border-gray-100 py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-gray-400 font-medium tracking-wide uppercase">
+            <div className="flex flex-col gap-2 text-center md:text-left">
+              <p>This is a prototype developed for UIDAI Data Hackathon 2026.</p>
+              <p>Data Source: data.gov.in (Anonymised & Aggregated)</p>
+              <p>For demonstration and analytical purposes only.</p>
+            </div>
+            <div className="flex gap-8">
+              <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-primary transition-colors">Terms of Use</a>
+              <a href="#" className="hover:text-primary transition-colors">Accessibility</a>
+            </div>
+          </div>
+          <div className="mt-8 pt-8 border-t border-gray-50 text-center text-[10px] text-gray-300">
+            © 2026 Unique Identification Authority of India. All rights reserved.
           </div>
         </div>
       </footer>
