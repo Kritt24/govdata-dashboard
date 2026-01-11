@@ -13,9 +13,9 @@ export function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col font-sans">
       {/* Official Header Strip */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+      <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
         {/* Top bar with government colors */}
-        <div className="h-1 w-full bg-gradient-to-r from-[hsl(25,95%,53%)] via-white to-[hsl(142,76%,36%)] opacity-80" />
+        <div className="h-1 w-full bg-gradient-to-r from-[#FF9933] via-[#FFFFFF] to-[#138808] opacity-60" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
@@ -23,17 +23,17 @@ export function Layout({ children }: LayoutProps) {
             <div className="flex items-center gap-4">
               <Link href="/">
                 <div className="flex items-center gap-3 cursor-pointer group">
-                  <div className="w-12 h-12 bg-[hsl(25,95%,53%)] rounded-full flex items-center justify-center text-white shadow-md group-hover:shadow-lg transition-all duration-300">
+                  <div className="w-10 h-10 bg-white border border-gray-100 rounded-full flex items-center justify-center shadow-sm">
                     <img 
                       src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" 
                       alt="Emblem"
-                      className="w-8 h-8 filter invert brightness-0" 
+                      className="w-6 h-6" 
                     />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-xs uppercase tracking-widest text-gray-500 font-bold">Government of India</span>
-                    <h1 className="text-xl font-serif font-black text-secondary leading-none mt-0.5">
-                      UIDAI <span className="text-primary font-normal">Analytics</span>
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-bold">Government of India</span>
+                    <h1 className="text-lg font-serif font-bold text-secondary leading-none mt-1">
+                      UIDAI <span className="text-primary">Analytics</span>
                     </h1>
                   </div>
                 </div>

@@ -11,29 +11,29 @@
 
   /* Official Government-style Palette */
   /* Base Colors */
-  --background: 210 20% 98%;      /* Light Gray/Blue tint */
+  --background: 210 20% 99%;      /* Brighter white/gray */
   --foreground: 222 47% 11%;      /* Deep Blue-Black */
   
   /* Primary - Official Blue */
-  --primary: 216 90% 45%;         /* Government Blue */
+  --primary: 216 80% 40%;         /* Slightly deeper blue */
   --primary-foreground: 0 0% 100%;
   
   /* Secondary - Ashoka Chakra Blue / Dark Navy */
   --secondary: 222 47% 11%;
   --secondary-foreground: 210 40% 98%;
   
-  /* Accent - Saffron inspired but accessible */
-  --accent: 25 95% 53%;           /* Deep Orange */
-  --accent-foreground: 0 0% 100%;
+  /* Accent - Reduced for official feel */
+  --accent: 216 20% 90%;           /* Subtle gray instead of orange */
+  --accent-foreground: 222 47% 11%;
   
   /* UI Elements */
   --card: 0 0% 100%;
   --card-foreground: 222 47% 11%;
   --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 216 90% 45%;
+  --muted-foreground: 215.4 16.3% 40%;
+  --border: 214.3 20% 90%;         /* Subtle borders */
+  --input: 214.3 20% 90%;
+  --ring: 216 80% 40%;
   
   /* Feedback */
   --destructive: 0 84.2% 60.2%;
@@ -50,9 +50,8 @@
 @layer base {
   body {
     @apply bg-background text-foreground antialiased font-sans;
-    background-image: 
-      radial-gradient(at 0% 0%, hsla(25, 95%, 53%, 0.03) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, hsla(142, 76%, 36%, 0.03) 0px, transparent 50%);
+    /* Clean background */
+    background-color: hsl(var(--background));
   }
 
   h1, h2, h3, h4, h5, h6 {

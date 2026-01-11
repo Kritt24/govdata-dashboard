@@ -22,7 +22,7 @@ export function DashboardCard({ title, value, trend, chartData, color, onClick }
       transition={{ duration: 0.2 }}
     >
       <Card 
-        className="group relative overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300 cursor-pointer"
+        className="group relative overflow-hidden bg-white border border-gray-100 hover:border-primary/30 transition-all duration-300 cursor-pointer"
         onClick={onClick}
       >
         <div className="p-6">
