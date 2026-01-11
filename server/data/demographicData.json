@@ -1,0 +1,19 @@
+{
+  "category": "demographic",
+  "title": "Demographic Update Insights",
+  "value": 4500000,
+  "trend": 5,
+  "keyQuestion": "What are the primary triggers for demographic updates among urban vs rural citizens?",
+  "insights": [
+    "Address updates constitute 45% of total demographic changes.",
+    "Mobile number linking has seen a 15% spike following the launch of new digital services.",
+    "Name corrections are most frequent after official marriage registration periods."
+  ],
+  "policyImplications": "Simplify the online address update process by integrating with DigiLocker. Increase awareness about the importance of keeping mobile numbers updated for OTP-based services.",
+  "data": [
+    { "name": "Name Change", "value": 35 },
+    { "name": "Address Change", "value": 45 },
+    { "name": "DOB Change", "value": 10 },
+    { "name": "Mobile Update", "value": 10 }
+  ]
+}

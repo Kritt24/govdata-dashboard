@@ -1,0 +1,18 @@
+{
+  "category": "biometric",
+  "title": "Biometric Update Analysis",
+  "value": 1200000,
+  "trend": -1,
+  "keyQuestion": "How does age-related biometric decay affect authentication success rates in elderly populations?",
+  "insights": [
+    "Mandatory biometric updates for children (at age 5 and 15) have reached 70% compliance.",
+    "Fingerprint authentication success rates are slightly lower in manual labor heavy regions.",
+    "Iris scan adoption as an alternative is increasing in specialized service centers."
+  ],
+  "policyImplications": "Introduce 'Face Auth' as a primary non-contact alternative for elderly citizens. Mandate biometric refresh every 10 years for adults to maintain authentication accuracy.",
+  "data": [
+    { "name": "Iris", "value": 20 },
+    { "name": "Fingerprint", "value": 50 },
+    { "name": "Photo", "value": 30 }
+  ]
+}

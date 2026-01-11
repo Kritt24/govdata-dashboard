@@ -1,0 +1,20 @@
+{
+  "category": "enrolment",
+  "title": "Aadhaar Enrolment Trends",
+  "value": 1350000000,
+  "trend": 2,
+  "keyQuestion": "How effectively is the enrolment process reaching remote and underserved populations?",
+  "insights": [
+    "98.5% of the adult population is now enrolled.",
+    "Significant growth observed in the northeastern states over the last quarter.",
+    "Child enrolment (0-5 years) remains a key focus area for upcoming drives."
+  ],
+  "policyImplications": "Enrolment centers should be prioritized in blocks with less than 90% saturation. Mobile enrolment kits should be deployed for elderly and disabled citizens in rural areas.",
+  "data": [
+    { "name": "Uttar Pradesh", "value": 240 },
+    { "name": "Maharashtra", "value": 125 },
+    { "name": "Bihar", "value": 130 },
+    { "name": "West Bengal", "value": 105 },
+    { "name": "Madhya Pradesh", "value": 95 }
+  ]
+}
