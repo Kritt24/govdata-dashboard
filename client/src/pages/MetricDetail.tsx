@@ -10,13 +10,14 @@ import {
 } from 'recharts';
 import { api, buildUrl } from "@shared/routes";
 import { motion } from "framer-motion";
+import type { Metric } from "@shared/schema";
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
 
 export default function MetricDetail() {
   const { id } = useParams();
   
-  const { data: metric, isLoading } = useQuery({
+  const { data: metric, isLoading } = useQuery<Metric>({
     queryKey: [buildUrl(api.metrics.get.path, { id: id! })],
   });
 
@@ -73,7 +74,7 @@ export default function MetricDetail() {
             </CardHeader>
             <CardContent>
               <p className="text-lg text-gray-700 font-medium italic">
-                "{metric.keyQuestion || "How are the current trends impacting service delivery at the grassroots level?"}"
+                "{metric.keyQuestion}"
               </p>
             </CardContent>
           </Card>
@@ -145,7 +146,7 @@ export default function MetricDetail() {
             </CardHeader>
             <CardContent>
               <ul className="space-y-4">
-                {(metric.insights as string[] || []).map((insight, idx) => (
+                {(metric.insights as string[]).map((insight, idx) => (
                   <li key={idx} className="flex gap-3 text-gray-700">
                     <span className="flex-shrink-0 w-6 h-6 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-xs font-bold border border-amber-100">
                       {idx + 1}
@@ -166,7 +167,7 @@ export default function MetricDetail() {
             </CardHeader>
             <CardContent>
               <p className="text-gray-300 leading-relaxed mb-4">
-                {metric.policyImplications || "Based on the observed trends, current policy frameworks may need to be adjusted to ensure equitable access and security."}
+                {metric.policyImplications}
               </p>
               <div className="pt-4 border-t border-gray-800">
                 <p className="text-xs text-gray-500 uppercase tracking-widest font-bold">Recommended Action</p>

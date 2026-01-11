@@ -89,7 +89,14 @@ export class MemStorage implements IStorage {
 
     mockMetrics.forEach((m, index) => {
       const id = index + 1;
-      this._metrics.set(id, { ...m, id, lastUpdated: new Date() });
+      this._metrics.set(id, { 
+        ...m, 
+        id, 
+        lastUpdated: new Date(),
+        keyQuestion: m.keyQuestion ?? "",
+        insights: m.insights ?? [],
+        policyImplications: m.policyImplications ?? ""
+      });
     });
   }
 }
