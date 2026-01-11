@@ -52,7 +52,12 @@ export default function Dashboard() {
         </p>
       </div>
 
-      <RoleSelector currentRole={role} onRoleChange={(r) => setRole(r as Role)} />
+      <div className="space-y-4 mb-8">
+        <RoleSelector currentRole={role} onRoleChange={(r) => setRole(r as Role)} />
+        <p className="text-xs text-gray-400 font-medium">
+          Select a perspective to view insights tailored for different audiences.
+        </p>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {metrics?.map((metric, index) => (
