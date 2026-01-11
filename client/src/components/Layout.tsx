@@ -43,9 +43,9 @@ export function Layout({ children }: LayoutProps) {
             {/* Right: Actions */}
             <div className="flex items-center gap-4">
               <div className="hidden md:flex items-center gap-6 mr-6 text-sm font-medium text-gray-600">
-                <Link href="/" className={cn("hover:text-primary transition-colors", location === "/" && "text-primary font-bold")}>Dashboard</Link>
-                <Link href="/reports" className="hover:text-primary transition-colors">Reports</Link>
-                <Link href="/help" className="hover:text-primary transition-colors">Help & Support</Link>
+                <Link href="/" className={cn("hover:text-primary transition-colors", location === "/" && "text-primary font-bold")}>Overview</Link>
+                <Link href="/reports" className="hover:text-primary transition-colors">Insights</Link>
+                <Link href="/help" className="hover:text-primary transition-colors">Documentation</Link>
               </div>
               
               <Button variant="ghost" size="icon" className="text-gray-500 hover:text-primary hover:bg-blue-50">
