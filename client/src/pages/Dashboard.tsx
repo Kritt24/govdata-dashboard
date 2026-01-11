@@ -45,7 +45,10 @@ export default function Dashboard() {
           Analytics Overview
         </h1>
         <p className="text-gray-500 max-w-2xl text-lg">
-          Real-time monitoring of Aadhaar enrolment, demographic updates, and biometric verification data across India.
+          Data-driven analysis of Aadhaar enrolment, demographic updates, and biometric trends across India.
+        </p>
+        <p className="text-gray-400 text-sm">
+          Data aggregated up to Dec 2025 (sample).
         </p>
       </div>
 
