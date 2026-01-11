@@ -72,22 +72,27 @@ export function Layout({ children }: LayoutProps) {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-100 py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-gray-400 font-medium tracking-wide uppercase">
-            <div className="flex flex-col gap-2 text-center md:text-left">
-              <p>This is a prototype developed for UIDAI Data Hackathon 2026.</p>
-              <p>Data Source: data.gov.in (Anonymised & Aggregated)</p>
-              <p>For demonstration and analytical purposes only.</p>
+      <footer className="bg-white border-t border-gray-100 py-6 mt-auto">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center text-[12px] leading-relaxed text-gray-400">
+            {/* Left column */}
+            <div className="text-center md:text-left">
+              UIDAI Data Hackathon 2026 (Prototype)
             </div>
-            <div className="flex gap-8">
+            
+            {/* Center column */}
+            <div className="text-center italic">
+              Anonymised, aggregated data for analytical demonstration only.
+            </div>
+            
+            {/* Right column */}
+            <div className="flex justify-center md:justify-end gap-4">
               <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-primary transition-colors">Terms of Use</a>
+              <span className="text-gray-200">|</span>
+              <a href="#" className="hover:text-primary transition-colors">Terms</a>
+              <span className="text-gray-200">|</span>
               <a href="#" className="hover:text-primary transition-colors">Accessibility</a>
             </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-gray-50 text-center text-[10px] text-gray-300">
-            © 2026 Unique Identification Authority of India. All rights reserved.
           </div>
         </div>
       </footer>
