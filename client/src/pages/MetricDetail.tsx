@@ -249,7 +249,7 @@ export default function MetricDetail() {
                 <div className="p-2 bg-orange-100 rounded-lg text-orange-600">
                   <Database className="w-5 h-5" />
                 </div>
-                <CardTitle>Admin Metadata & Source</CardTitle>
+                <CardTitle>Dataset Metadata</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
