@@ -11,9 +11,10 @@ interface DashboardCardProps {
   chartData: any[];
   color: string;
   onClick: () => void;
+  insight?: string;
 }
 
-export function DashboardCard({ title, value, trend, chartData, color, onClick }: DashboardCardProps) {
+export function DashboardCard({ title, value, trend, chartData, color, onClick, insight }: DashboardCardProps) {
   const isPositive = trend >= 0;
   
   return (
@@ -29,9 +30,14 @@ export function DashboardCard({ title, value, trend, chartData, color, onClick }
           <div className="flex justify-between items-start mb-6">
             <div>
               <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">{title}</p>
-              <h3 className="text-3xl font-serif font-bold text-gray-900 mt-2">
+              <h3 className="text-3xl font-serif font-bold text-gray-900 mt-2 leading-tight">
                 {value.toLocaleString('en-IN')}
               </h3>
+              {insight && (
+                <p className="text-xs text-gray-400 mt-2 font-medium italic line-clamp-1">
+                  "{insight}"
+                </p>
+              )}
             </div>
             <div className={cn(
               "flex items-center px-2.5 py-1 rounded-full text-xs font-bold",

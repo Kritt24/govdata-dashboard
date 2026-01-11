@@ -67,10 +67,15 @@ export default function Dashboard() {
               value={metric.value}
               trend={metric.trend}
               chartData={metric.data as any[]}
+              insight={
+                index === 0 ? "Higher enrolment growth observed in urban districts." :
+                index === 1 ? "Increased mobile updates noted in rural sectors." :
+                "Stable authentication success rates across all regions."
+              }
               color={
-                index === 0 ? "hsl(216, 90%, 45%)" : 
-                index === 1 ? "hsl(25, 95%, 53%)" : 
-                "hsl(142, 76%, 36%)"
+                index === 0 ? "hsl(216, 80%, 40%)" : 
+                index === 1 ? "hsl(216, 20%, 60%)" : 
+                "hsl(216, 40%, 30%)"
               }
               onClick={() => setLocation(`/metrics/${metric.id}`)}
             />
