@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
-import bannerLogo from "@assets/WhatsApp_Image_2026-01-12_at_9.57.13_PM_1768295798079.jpeg";
+import bannerLogo from "@assets/WhatsApp_Image_2026-01-12_at_9.57.13_PM_1768295977407.jpeg";
 
 interface LayoutProps {
   children: React.ReactNode;
