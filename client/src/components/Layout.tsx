@@ -52,88 +52,96 @@ export function Layout({ children }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
             {/* Left: Branding */}
-            <div className="flex items-center gap-4 py-2">
+            <div className="flex items-center gap-6 py-4">
               <Link href="/">
-                <div className="flex flex-col gap-1.5 cursor-pointer group">
-                  {/* Top Line: Flag and text */}
-                  <div className="flex items-center gap-2">
-                    <img 
-                      src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" 
-                      alt="Indian Flag"
-                      className="h-3 w-auto" 
-                    />
-                    <span className="text-[10px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400 font-bold whitespace-nowrap">Government of India</span>
-                  </div>
-                  
-                  {/* Bottom Line: National Emblem and UIDAI Logo */}
-                  <div className="flex items-center gap-3">
-                    <img 
-                      src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" 
-                      alt="National Emblem"
-                      className="h-9 w-auto dark:invert dark:brightness-200" 
-                    />
-                    <div className="h-6 w-[1px] bg-gray-200 dark:bg-gray-800" />
+                <div className="flex items-center gap-4 cursor-pointer group border-r border-gray-100 dark:border-gray-800 pr-6">
+                  <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" 
+                    alt="National Emblem"
+                    className="h-12 w-auto dark:invert dark:brightness-200" 
+                  />
+                  <div className="flex flex-col">
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <img 
+                        src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" 
+                        alt="Indian Flag"
+                        className="h-2.5 w-auto" 
+                      />
+                      <span className="text-[9px] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-bold">Government of India</span>
+                    </div>
                     <img 
                       src="https://upload.wikimedia.org/wikipedia/en/c/cf/Aadhaar_Logo.svg" 
                       alt="UIDAI Aadhaar Logo"
-                      className="h-8 w-auto dark:invert dark:brightness-200" 
+                      className="h-7 w-auto dark:invert dark:brightness-200" 
                     />
                   </div>
                 </div>
               </Link>
             </div>
 
-            {/* Right: Actions */}
-            <div className="flex items-center gap-4">
-              <div className="hidden md:flex items-center gap-6 mr-6 text-sm font-medium text-gray-600 dark:text-gray-400">
-                <Link href="/" className={cn("hover:text-primary transition-colors", location === "/" && "text-primary font-bold")}>Overview</Link>
-                <Link href="/reports" className="hover:text-primary transition-colors">Insights</Link>
-                <Link href="/help" className="hover:text-primary transition-colors">Documentation</Link>
-              </div>
-              
-              <ThemeToggle />
-              
-              <div className="h-8 w-[1px] bg-gray-200 dark:bg-gray-800 mx-2" />
+            {/* Center/Right: Horizontal Navigation */}
+            <nav className="flex-1 flex items-center justify-end">
+              <div className="hidden lg:flex items-center h-full">
+                <Link href="/">
+                  <div className={cn(
+                    "px-6 h-20 flex items-center text-sm font-semibold uppercase tracking-wide border-x border-transparent hover:bg-gray-50 dark:hover:bg-gray-800 transition-all cursor-pointer",
+                    location === "/" ? "text-primary border-x-gray-100 dark:border-x-gray-800 bg-gray-50/50 dark:bg-gray-800/50" : "text-gray-600 dark:text-gray-400"
+                  )}>
+                    Overview
+                  </div>
+                </Link>
+                <Link href="/reports">
+                  <div className="px-6 h-20 flex items-center text-sm font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all cursor-pointer">
+                    Insights
+                  </div>
+                </Link>
+                <Link href="/help">
+                  <div className="px-6 h-20 flex items-center text-sm font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all cursor-pointer">
+                    Documentation
+                  </div>
+                </Link>
+                
+                <div className="h-20 flex items-center px-6 border-l border-gray-100 dark:border-gray-800">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors h-10 px-4">
+                        <currentPerspective.icon className="w-4 h-4" />
+                        <span className="text-xs font-bold uppercase tracking-wider">User Perspective</span>
+                        <ChevronDown className="w-4 h-4 opacity-50" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" className="w-56 bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 shadow-md">
+                      {perspectives.map((p) => (
+                        <DropdownMenuItem 
+                          key={p.id} 
+                          onClick={() => setRole(p.id as Role)}
+                          className={cn(
+                            "flex items-center gap-2 cursor-pointer transition-colors px-3 py-2", 
+                            role === p.id 
+                              ? "bg-blue-50 dark:bg-blue-900/20 text-primary font-bold" 
+                              : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                          )}
+                        >
+                          <p.icon className="w-4 h-4" />
+                          {p.id}
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
 
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
-                    <currentPerspective.icon className="w-4 h-4" />
-                    <span className="text-sm font-medium">User Perspective</span>
-                    <ChevronDown className="w-4 h-4 opacity-50" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56 bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 shadow-md">
-                  {perspectives.map((p) => (
-                    <DropdownMenuItem 
-                      key={p.id} 
-                      onClick={() => setRole(p.id as Role)}
-                      className={cn(
-                        "flex items-center gap-2 cursor-pointer transition-colors px-3 py-2", 
-                        role === p.id 
-                          ? "bg-blue-50 dark:bg-blue-900/20 text-primary font-bold" 
-                          : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-                      )}
-                    >
-                      <p.icon className="w-4 h-4" />
-                      {p.id}
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-              
-              <Button variant="ghost" size="icon" className="text-gray-500 hover:text-primary hover:bg-blue-50 dark:hover:bg-gray-800">
-                <Bell className="w-5 h-5" />
-              </Button>
-              
-              <div className="h-8 w-[1px] bg-gray-200 dark:bg-gray-800 mx-2" />
-              
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">
-                  JS
+                <div className="h-20 flex items-center px-6 border-l border-gray-100 dark:border-gray-800">
+                  <ThemeToggle />
                 </div>
               </div>
-            </div>
+
+              {/* Mobile Menu Trigger Placeholder */}
+              <div className="lg:hidden">
+                <Button variant="ghost" size="icon">
+                  <Globe className="w-6 h-6 text-gray-600" />
+                </Button>
+              </div>
+            </nav>
           </div>
         </div>
       </header>
