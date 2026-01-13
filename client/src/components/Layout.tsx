@@ -99,16 +99,21 @@ export function Layout({ children }: LayoutProps) {
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
                     <currentPerspective.icon className="w-4 h-4" />
-                    <span className="text-sm font-medium">{role}</span>
+                    <span className="text-sm font-medium">User Perspective</span>
                     <ChevronDown className="w-4 h-4 opacity-50" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuContent align="end" className="w-56 bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 shadow-md">
                   {perspectives.map((p) => (
                     <DropdownMenuItem 
                       key={p.id} 
                       onClick={() => setRole(p.id as Role)}
-                      className={cn("flex items-center gap-2 cursor-pointer", role === p.id && "bg-blue-50 dark:bg-blue-900/20 text-primary font-bold")}
+                      className={cn(
+                        "flex items-center gap-2 cursor-pointer transition-colors px-3 py-2", 
+                        role === p.id 
+                          ? "bg-blue-50 dark:bg-blue-900/20 text-primary font-bold" 
+                          : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                      )}
                     >
                       <p.icon className="w-4 h-4" />
                       {p.id}
