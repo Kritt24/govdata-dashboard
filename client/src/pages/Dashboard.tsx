@@ -4,6 +4,7 @@ import { RoleSelector } from "@/components/RoleSelector";
 import { DashboardCard } from "@/components/DashboardCard";
 import { useMetrics } from "@/hooks/use-metrics";
 import { Globe, Map as MapIcon, Info } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 import { motion } from "framer-motion";
 import { useRoleStore, type Role } from "@/hooks/use-role";
 
