@@ -51,7 +51,7 @@ export default function Dashboard() {
       </div>
 
       <div className="w-full bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
-        <div className="max-w-[1200px] mx-auto px-6 py-12">
+        <div className="max-w-[1200px] mx-auto px-6 py-12 flex flex-col items-center text-center">
           <div className="max-w-3xl">
             <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-gray-100 mb-6 tracking-tight">
               Welcome to Sanrachna
