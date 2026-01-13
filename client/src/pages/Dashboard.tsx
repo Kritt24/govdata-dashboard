@@ -3,7 +3,7 @@ import { Layout } from "@/components/Layout";
 import { RoleSelector } from "@/components/RoleSelector";
 import { DashboardCard } from "@/components/DashboardCard";
 import { useMetrics } from "@/hooks/use-metrics";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Globe, Map as MapIcon, Info } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRoleStore, type Role } from "@/hooks/use-role";
 
@@ -103,15 +103,38 @@ export default function Dashboard() {
           ))}
         </div>
 
+        {/* National Aadhaar Coverage Map Section */}
+        <div className="mt-12 w-full">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-xl font-serif font-bold text-gray-900 dark:text-gray-100 tracking-tight">
+              National Aadhaar Coverage Map
+            </h3>
+            <div className="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-wider rounded-full border border-blue-100 dark:border-blue-800">
+              Future Visualization
+            </div>
+          </div>
+          <div className="w-full h-[400px] rounded-2xl border-2 border-dashed border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50 flex flex-col items-center justify-center gap-4 group hover:border-primary/30 transition-colors">
+            <div className="w-16 h-16 rounded-full bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 flex items-center justify-center shadow-sm">
+              <Globe className="w-8 h-8 text-gray-400 group-hover:text-primary transition-colors" />
+            </div>
+            <p className="text-gray-500 dark:text-gray-400 font-serif italic text-lg">
+              Interactive India Map — Coming Soon
+            </p>
+            <p className="text-xs text-gray-400 dark:text-gray-500 max-w-sm text-center px-6">
+              Geographic distribution of Aadhaar saturation and enrolment patterns will be visualized here in the next phase.
+            </p>
+          </div>
+        </div>
+
         {/* Quick Stats Grid */}
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-4 gap-6">
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 dark:from-black dark:to-gray-900 rounded-2xl p-6 text-white col-span-1 lg:col-span-2 shadow-2xl">
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 dark:from-black dark:to-gray-900 rounded-2xl p-6 text-white col-span-1 lg:col-span-4 shadow-2xl">
             <h3 className="text-lg font-medium mb-1 text-gray-200">System Status</h3>
             <div className="flex items-center gap-2 mb-6">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
               <span className="text-sm text-green-400 font-bold">OPERATIONAL</span>
             </div>
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div>
                 <div className="text-3xl font-bold mb-1">99.98%</div>
                 <div className="text-xs text-gray-400 uppercase tracking-wider">Uptime (30 Days)</div>
@@ -120,26 +143,14 @@ export default function Dashboard() {
                 <div className="text-3xl font-bold mb-1">12ms</div>
                 <div className="text-xs text-gray-400 uppercase tracking-wider">Avg Latency</div>
               </div>
-            </div>
-          </div>
-          
-          <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-            <div>
-              <h4 className="text-gray-500 dark:text-gray-400 font-medium text-sm">Pending Updates</h4>
-              <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mt-2">14,205</div>
-            </div>
-            <div className="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-1.5 mt-4 overflow-hidden">
-              <div className="bg-yellow-500 h-1.5 rounded-full w-[65%]"></div>
-            </div>
-          </div>
-          
-          <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-            <div>
-              <h4 className="text-gray-500 dark:text-gray-400 font-medium text-sm">Failed Auth (24h)</h4>
-              <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mt-2">0.04%</div>
-            </div>
-            <div className="text-green-600 dark:text-green-400 text-xs font-bold flex items-center mt-4">
-              <span className="bg-green-100 dark:bg-green-900/40 px-2 py-1 rounded-full">-12% from avg</span>
+              <div>
+                <div className="text-3xl font-bold mb-1">14,205</div>
+                <div className="text-xs text-gray-400 uppercase tracking-wider">Pending Updates</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold mb-1">0.04%</div>
+                <div className="text-xs text-gray-400 uppercase tracking-wider">Failed Auth (24h)</div>
+              </div>
             </div>
           </div>
         </div>
