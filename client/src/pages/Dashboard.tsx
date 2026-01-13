@@ -64,7 +64,7 @@ export default function Dashboard() {
                 The platform enables exploration of trends across states and districts, helping identify patterns, coverage gaps, and areas requiring administrative attention through intuitive maps and charts.
               </p>
             </div>
-            <div className="mt-8 pt-8 border-t border-gray-50 dark:border-gray-800">
+            <div className="mt-4 pt-4 border-t border-gray-50 dark:border-gray-800">
               <p className="text-primary font-serif italic text-xl tracking-tight">
                 Discover patterns. Understand change. Plan better — with Sanrachna.
               </p>
