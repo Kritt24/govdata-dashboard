@@ -3,6 +3,8 @@ import { Globe, ShieldCheck, Fingerprint, LogOut, Bell } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
+import bannerLogo from "@assets/WhatsApp_Image_2026-01-12_at_9.57.13_PM_1768295977407.jpeg";
+
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -11,9 +13,21 @@ export function Layout({ children }: LayoutProps) {
   const [location] = useLocation();
 
   return (
-    <div className="min-h-screen flex flex-col font-sans">
+    <div className="min-h-screen flex flex-col font-sans relative">
+      {/* Background Watermark */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center opacity-[0.05]"
+        style={{
+          backgroundImage: `url(${bannerLogo})`,
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'contain',
+          transform: 'scale(0.8)',
+        }}
+      />
+
       {/* Official Header Strip */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
+      <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm relative">
         {/* Top bar with government colors */}
         <div className="h-1 w-full bg-gradient-to-r from-[#FF9933] via-[#FFFFFF] to-[#138808] opacity-60" />
         

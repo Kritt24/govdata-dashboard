@@ -42,7 +42,7 @@ export default function Dashboard() {
 
   return (
     <Layout>
-      <div className="w-full bg-[#0a111a]">
+      <div className="w-full bg-[#0a111a] relative z-10">
         <img 
           src={bannerImg} 
           alt="SANRACHNA Header Banner" 
@@ -50,7 +50,7 @@ export default function Dashboard() {
         />
       </div>
 
-      <div className="max-w-[1200px] mx-auto px-6 w-full pt-12">
+      <div className="max-w-[1200px] mx-auto px-6 w-full pt-12 relative z-10">
         <div className="space-y-4 mb-8 text-center">
           <RoleSelector currentRole={role} onRoleChange={(r) => setRole(r as Role)} />
           <p className="text-xs text-gray-400 font-medium">
