@@ -63,7 +63,8 @@ export default function MetricDetail() {
 
   return (
     <Layout>
-      <div className="mb-8">
+      <div className="max-w-[1200px] mx-auto px-6 w-full py-8 md:py-12">
+        <div className="mb-8">
         <Link href="/">
           <div className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-primary transition-colors mb-6 group cursor-pointer">
             <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />

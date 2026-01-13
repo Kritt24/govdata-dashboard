@@ -7,6 +7,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { motion } from "framer-motion";
 import { useRoleStore, type Role } from "@/hooks/use-role";
 
+import bannerImg from "@assets/WhatsApp_Image_2026-01-12_at_9.57.12_PM_1768295798079.jpeg";
+
 export default function Dashboard() {
   const { role, setRole } = useRoleStore();
   const [, setLocation] = useLocation();
@@ -40,19 +42,15 @@ export default function Dashboard() {
 
   return (
     <Layout>
-      <div className="max-w-[1200px] mx-auto px-6 w-full">
-        <div className="space-y-2 mb-8 text-center">
-          <h1 className="text-4xl font-serif font-bold text-gray-900">
-            Analytics Overview
-          </h1>
-          <p className="text-gray-500 max-w-2xl text-lg mx-auto">
-            Data-driven analysis of Aadhaar enrolment, demographic updates, and biometric trends across India.
-          </p>
-          <p className="text-gray-400 text-sm">
-            Data aggregated up to Dec 2025 (sample).
-          </p>
-        </div>
+      <div className="w-full bg-[#0a111a]">
+        <img 
+          src={bannerImg} 
+          alt="SANRACHNA Header Banner" 
+          className="w-full max-w-7xl mx-auto h-auto block"
+        />
+      </div>
 
+      <div className="max-w-[1200px] mx-auto px-6 w-full pt-12">
         <div className="space-y-4 mb-8 text-center">
           <RoleSelector currentRole={role} onRoleChange={(r) => setRole(r as Role)} />
           <p className="text-xs text-gray-400 font-medium">

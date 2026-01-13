@@ -66,7 +66,7 @@ export function Layout({ children }: LayoutProps) {
 
       {/* Main Content */}
       <main className="flex-1 bg-gray-50/50">
-        <div className="py-8 md:py-12">
+        <div>
           {children}
         </div>
       </main>
