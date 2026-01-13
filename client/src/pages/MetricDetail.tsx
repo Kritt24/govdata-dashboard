@@ -65,16 +65,16 @@ export default function MetricDetail() {
     <Layout>
       <div className="max-w-[1200px] mx-auto px-6 w-full py-8 md:py-12">
         <div className="mb-8">
-        <Link href="/">
-          <div className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-primary transition-colors mb-6 group cursor-pointer">
-            <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
-            Back to Overview
-          </div>
-        </Link>
-        <h1 className="text-4xl font-serif font-bold text-gray-900">{metric.title}</h1>
-      </div>
+          <Link href="/">
+            <div className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-primary transition-colors mb-6 group cursor-pointer">
+              <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
+              Back to Overview
+            </div>
+          </Link>
+          <h1 className="text-4xl font-serif font-bold text-gray-900">{metric.title}</h1>
+        </div>
 
-      <div className="grid gap-8">
+        <div className="grid gap-8">
         {/* Key Question Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
