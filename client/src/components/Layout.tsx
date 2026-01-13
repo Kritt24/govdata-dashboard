@@ -54,21 +54,24 @@ export function Layout({ children }: LayoutProps) {
             {/* Left: Branding */}
             <div className="flex items-center gap-6 py-4">
               <Link href="/">
-                <div className="flex items-center gap-4 cursor-pointer group border-r border-gray-100 dark:border-gray-800 pr-6">
-                  <img 
-                    src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" 
-                    alt="National Emblem"
-                    className="h-12 w-auto dark:invert dark:brightness-200" 
-                  />
-                  <div className="flex flex-col">
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <img 
-                        src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" 
-                        alt="Indian Flag"
-                        className="h-2.5 w-auto" 
-                      />
-                      <span className="text-[9px] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-bold">Government of India</span>
-                    </div>
+                <div className="flex flex-col gap-2 cursor-pointer group border-r border-gray-100 dark:border-gray-800 pr-6">
+                  {/* Top Line: Flag and text on SAME horizontal line */}
+                  <div className="flex items-center gap-2">
+                    <img 
+                      src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" 
+                      alt="Indian Flag"
+                      className="h-3 w-auto" 
+                    />
+                    <span className="text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-bold whitespace-nowrap">Government of India</span>
+                  </div>
+                  
+                  {/* Bottom Line: National Emblem and UIDAI logo neatly aligned */}
+                  <div className="flex items-center gap-4">
+                    <img 
+                      src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" 
+                      alt="National Emblem"
+                      className="h-8 w-auto dark:invert dark:brightness-200" 
+                    />
                     <img 
                       src="https://upload.wikimedia.org/wikipedia/en/c/cf/Aadhaar_Logo.svg" 
                       alt="UIDAI Aadhaar Logo"
