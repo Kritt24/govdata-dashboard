@@ -75,211 +75,212 @@ export default function MetricDetail() {
         </div>
 
         <div className="grid gap-8">
-        {/* Key Question Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <Card className="border-l-4 border-l-blue-600 bg-blue-50/30 overflow-hidden">
-            <CardHeader className="flex flex-row items-center gap-4 py-4">
-              <div className="p-2 bg-blue-100 rounded-lg text-blue-600">
-                <HelpCircle className="w-5 h-5" />
-              </div>
-              <CardTitle className="text-xl">Key Question</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-lg text-gray-700 font-medium italic">
-                "{metric.keyQuestion}"
-              </p>
-            </CardContent>
-          </Card>
-        </motion.div>
-
-        {/* Charts Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <Card className="overflow-hidden">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <BarChart3 className="w-4 h-4 text-primary" />
-                State-wise Comparison (Millions)
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="h-[350px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={metric.data as any[]}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip 
-                    contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}
-                  />
-                  <Bar dataKey="value" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-
-          <Card className="overflow-hidden">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <TrendingUp className="w-4 h-4 text-primary" />
-                Time-based Trend (Last 6 Months)
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="h-[350px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={timeTrends}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip 
-                    contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}
-                  />
-                  <Line type="monotone" dataKey="value" stroke="hsl(var(--primary))" strokeWidth={3} dot={{ r: 4, fill: "hsl(var(--primary))" }} />
-                </LineChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Map Placeholder & Category Pie */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <Card className="lg:col-span-2 overflow-hidden">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <Map className="w-4 h-4 text-primary" />
-                Geographic Coverage Analysis
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="flex items-center justify-center bg-gray-50 min-h-[300px]">
-              <div className="text-center text-gray-400 space-y-4">
-                <svg width="200" height="240" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="mx-auto opacity-20">
-                  <path d="M100 0L125 40L180 50L140 90L150 150L100 120L50 150L60 90L20 50L75 40L100 0Z" fill="currentColor"/>
-                </svg>
-                <p className="text-sm font-medium">Interactive Geographic Map View</p>
-                <p className="text-xs">Spatial data distribution across all states and union territories</p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="overflow-hidden">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <PieChart className="w-4 h-4 text-primary" />
-                Category Breakdown
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="h-[300px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <RePieChart>
-                  <Pie
-                    data={metric.data as any[]}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={60}
-                    outerRadius={100}
-                    paddingAngle={5}
-                    dataKey="value"
-                  >
-                    {(metric.data as any[]).map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                  <Legend />
-                </RePieChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Key Insights & Policy Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Card className="overflow-hidden">
-            <CardHeader className="flex flex-row items-center gap-4">
-              <div className="p-2 bg-amber-100 rounded-lg text-amber-600">
-                <Lightbulb className="w-5 h-5" />
-              </div>
-              <CardTitle>Key Insights</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-4">
-                {(metric.insights as string[]).map((insight, idx) => (
-                  <li key={idx} className="flex gap-3 text-gray-700">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-xs font-bold border border-amber-100">
-                      {idx + 1}
-                    </span>
-                    <p>{insight}</p>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          {!isCitizen && (
-            <Card className="bg-gray-900 text-white overflow-hidden border-0 shadow-2xl">
-              <CardHeader className="flex flex-row items-center gap-4">
-                <div className="p-2 bg-gray-800 rounded-lg text-primary">
-                  <FileText className="w-5 h-5" />
-                </div>
-                <CardTitle className="text-white">Policy Implications</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  {metric.policyImplications}
-                </p>
-                <div className="pt-4 border-t border-gray-800">
-                  <p className="text-xs text-gray-500 uppercase tracking-widest font-bold">Recommended Action</p>
-                  <p className="text-sm mt-1 text-primary italic font-medium">
-                    "Prioritize infrastructure expansion in regions showing higher than average biometric update failure rates."
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          )}
-        </div>
-
-        {/* Admin Section */}
-        {isAdmin && (
+          {/* Key Question Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <Card className="border-t-4 border-t-orange-500">
-              <CardHeader className="flex flex-row items-center gap-4">
-                <div className="p-2 bg-orange-100 rounded-lg text-orange-600">
-                  <Database className="w-5 h-5" />
+            <Card className="border-l-4 border-l-blue-600 bg-blue-50/30 overflow-hidden">
+              <CardHeader className="flex flex-row items-center gap-4 py-4">
+                <div className="p-2 bg-blue-100 rounded-lg text-blue-600">
+                  <HelpCircle className="w-5 h-5" />
                 </div>
-                <CardTitle>Dataset Metadata</CardTitle>
+                <CardTitle className="text-xl">Key Question</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                  <div className="flex items-start gap-3">
-                    <Server className="w-5 h-5 text-gray-400 mt-1" />
-                    <div>
-                      <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Source Cluster</p>
-                      <p className="text-sm font-medium">UIDAI-PROD-SOUTH-01</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-gray-400 mt-1" />
-                    <div>
-                      <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Last Sync</p>
-                      <p className="text-sm font-medium">{metric.lastUpdated ? new Date(metric.lastUpdated).toLocaleString() : 'N/A'}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Database className="w-5 h-5 text-gray-400 mt-1" />
-                    <div>
-                      <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Record Count</p>
-                      <p className="text-sm font-medium">1,240,582 records processed</p>
-                    </div>
-                  </div>
-                </div>
+                <p className="text-lg text-gray-700 font-medium italic">
+                  "{metric.keyQuestion}"
+                </p>
               </CardContent>
             </Card>
           </motion.div>
-        )}
+
+          {/* Charts Section */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <Card className="overflow-hidden">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <BarChart3 className="w-4 h-4 text-primary" />
+                  State-wise Comparison (Millions)
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="h-[350px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={metric.data as any[]}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip 
+                      contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}
+                    />
+                    <Bar dataKey="value" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </CardContent>
+            </Card>
+
+            <Card className="overflow-hidden">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <TrendingUp className="w-4 h-4 text-primary" />
+                  Time-based Trend (Last 6 Months)
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="h-[350px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={timeTrends}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip 
+                      contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}
+                    />
+                    <Line type="monotone" dataKey="value" stroke="hsl(var(--primary))" strokeWidth={3} dot={{ r: 4, fill: "hsl(var(--primary))" }} />
+                  </LineChart>
+                </ResponsiveContainer>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Map Placeholder & Category Pie */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <Card className="lg:col-span-2 overflow-hidden">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <Map className="w-4 h-4 text-primary" />
+                  Geographic Coverage Analysis
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="flex items-center justify-center bg-gray-50 min-h-[300px]">
+                <div className="text-center text-gray-400 space-y-4">
+                  <svg width="200" height="240" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg" className="mx-auto opacity-20">
+                    <path d="M100 0L125 40L180 50L140 90L150 150L100 120L50 150L60 90L20 50L75 40L100 0Z" fill="currentColor"/>
+                  </svg>
+                  <p className="text-sm font-medium">Interactive Geographic Map View</p>
+                  <p className="text-xs">Spatial data distribution across all states and union territories</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="overflow-hidden">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <PieChart className="w-4 h-4 text-primary" />
+                  Category Breakdown
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="h-[300px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <RePieChart>
+                    <Pie
+                      data={metric.data as any[]}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={60}
+                      outerRadius={100}
+                      paddingAngle={5}
+                      dataKey="value"
+                    >
+                      {(metric.data as any[]).map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      ))}
+                    </Pie>
+                    <Tooltip />
+                    <Legend />
+                  </RePieChart>
+                </ResponsiveContainer>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Key Insights & Policy Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Card className="overflow-hidden">
+              <CardHeader className="flex flex-row items-center gap-4">
+                <div className="p-2 bg-amber-100 rounded-lg text-amber-600">
+                  <Lightbulb className="w-5 h-5" />
+                </div>
+                <CardTitle>Key Insights</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-4">
+                  {(metric.insights as string[]).map((insight, idx) => (
+                    <li key={idx} className="flex gap-3 text-gray-700">
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-xs font-bold border border-amber-100">
+                        {idx + 1}
+                      </span>
+                      <p>{insight}</p>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+
+            {!isCitizen && (
+              <Card className="bg-gray-900 text-white overflow-hidden border-0 shadow-2xl">
+                <CardHeader className="flex flex-row items-center gap-4">
+                  <div className="p-2 bg-gray-800 rounded-lg text-primary">
+                    <FileText className="w-5 h-5" />
+                  </div>
+                  <CardTitle className="text-white">Policy Implications</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-300 leading-relaxed mb-4">
+                    {metric.policyImplications}
+                  </p>
+                  <div className="pt-4 border-t border-gray-800">
+                    <p className="text-xs text-gray-500 uppercase tracking-widest font-bold">Recommended Action</p>
+                    <p className="text-sm mt-1 text-primary italic font-medium">
+                      "Prioritize infrastructure expansion in regions showing higher than average biometric update failure rates."
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </div>
+
+          {/* Admin Section */}
+          {isAdmin && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <Card className="border-t-4 border-t-orange-500">
+                <CardHeader className="flex flex-row items-center gap-4">
+                  <div className="p-2 bg-orange-100 rounded-lg text-orange-600">
+                    <Database className="w-5 h-5" />
+                  </div>
+                  <CardTitle>Dataset Metadata</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div className="flex items-start gap-3">
+                      <Server className="w-5 h-5 text-gray-400 mt-1" />
+                      <div>
+                        <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Source Cluster</p>
+                        <p className="text-sm font-medium">UIDAI-PROD-SOUTH-01</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Clock className="w-5 h-5 text-gray-400 mt-1" />
+                      <div>
+                        <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Last Sync</p>
+                        <p className="text-sm font-medium">{metric.lastUpdated ? new Date(metric.lastUpdated).toLocaleString() : 'N/A'}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Database className="w-5 h-5 text-gray-400 mt-1" />
+                      <div>
+                        <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Record Count</p>
+                        <p className="text-sm font-medium">1,240,582 records processed</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          )}
+        </div>
       </div>
     </Layout>
   );
