@@ -89,7 +89,7 @@ export default function Dashboard() {
 
         {/* Quick Stats Grid */}
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-4 gap-6">
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 text-white col-span-1 lg:col-span-2 shadow-2xl">
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 dark:from-black dark:to-gray-900 rounded-2xl p-6 text-white col-span-1 lg:col-span-2 shadow-2xl">
             <h3 className="text-lg font-medium mb-1 text-gray-200">System Status</h3>
             <div className="flex items-center gap-2 mb-6">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
@@ -107,23 +107,23 @@ export default function Dashboard() {
             </div>
           </div>
           
-          <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
             <div>
-              <h4 className="text-gray-500 font-medium text-sm">Pending Updates</h4>
-              <div className="text-3xl font-bold text-gray-900 mt-2">14,205</div>
+              <h4 className="text-gray-500 dark:text-gray-400 font-medium text-sm">Pending Updates</h4>
+              <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mt-2">14,205</div>
             </div>
-            <div className="w-full bg-gray-100 rounded-full h-1.5 mt-4 overflow-hidden">
+            <div className="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-1.5 mt-4 overflow-hidden">
               <div className="bg-yellow-500 h-1.5 rounded-full w-[65%]"></div>
             </div>
           </div>
           
-          <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
             <div>
-              <h4 className="text-gray-500 font-medium text-sm">Failed Auth (24h)</h4>
-              <div className="text-3xl font-bold text-gray-900 mt-2">0.04%</div>
+              <h4 className="text-gray-500 dark:text-gray-400 font-medium text-sm">Failed Auth (24h)</h4>
+              <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 mt-2">0.04%</div>
             </div>
-            <div className="text-green-600 text-xs font-bold flex items-center mt-4">
-              <span className="bg-green-100 px-2 py-1 rounded-full">-12% from avg</span>
+            <div className="text-green-600 dark:text-green-400 text-xs font-bold flex items-center mt-4">
+              <span className="bg-green-100 dark:bg-green-900/40 px-2 py-1 rounded-full">-12% from avg</span>
             </div>
           </div>
         </div>

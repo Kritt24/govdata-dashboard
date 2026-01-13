@@ -2,8 +2,9 @@ import { Link, useLocation } from "wouter";
 import { Globe, ShieldCheck, Fingerprint, LogOut, Bell } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
-import bannerLogo from "@assets/WhatsApp_Image_2026-01-12_at_9.57.13_PM_1768295977407.jpeg";
+import bannerLogo from "@assets/WhatsApp_Image_2026-01-12_at_9.57.13_PM_1768295798079.jpeg";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -16,7 +17,7 @@ export function Layout({ children }: LayoutProps) {
     <div className="min-h-screen flex flex-col font-sans relative">
       {/* Background Watermark */}
       <div 
-        className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center opacity-[0.05]"
+        className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center opacity-[0.05] dark:opacity-[0.03]"
         style={{
           backgroundImage: `url(${bannerLogo})`,
           backgroundPosition: 'center',
@@ -27,7 +28,7 @@ export function Layout({ children }: LayoutProps) {
       />
 
       {/* Official Header Strip */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm relative">
+      <header className="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 shadow-sm relative">
         {/* Top bar with government colors */}
         <div className="h-1 w-full bg-gradient-to-r from-[#FF9933] via-[#FFFFFF] to-[#138808] opacity-60" />
         
@@ -44,7 +45,7 @@ export function Layout({ children }: LayoutProps) {
                       alt="Indian Flag"
                       className="h-3 w-auto" 
                     />
-                    <span className="text-[10px] uppercase tracking-[0.1em] text-gray-500 font-bold whitespace-nowrap">Government of India</span>
+                    <span className="text-[10px] uppercase tracking-[0.1em] text-gray-500 dark:text-gray-400 font-bold whitespace-nowrap">Government of India</span>
                   </div>
                   
                   {/* Bottom Line: National Emblem and UIDAI Logo */}
@@ -52,13 +53,13 @@ export function Layout({ children }: LayoutProps) {
                     <img 
                       src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" 
                       alt="National Emblem"
-                      className="h-9 w-auto" 
+                      className="h-9 w-auto dark:invert dark:brightness-200" 
                     />
-                    <div className="h-6 w-[1px] bg-gray-200" />
+                    <div className="h-6 w-[1px] bg-gray-200 dark:bg-gray-800" />
                     <img 
                       src="https://upload.wikimedia.org/wikipedia/en/c/cf/Aadhaar_Logo.svg" 
                       alt="UIDAI Aadhaar Logo"
-                      className="h-8 w-auto" 
+                      className="h-8 w-auto dark:invert dark:brightness-200" 
                     />
                   </div>
                 </div>
@@ -67,20 +68,22 @@ export function Layout({ children }: LayoutProps) {
 
             {/* Right: Actions */}
             <div className="flex items-center gap-4">
-              <div className="hidden md:flex items-center gap-6 mr-6 text-sm font-medium text-gray-600">
+              <div className="hidden md:flex items-center gap-6 mr-6 text-sm font-medium text-gray-600 dark:text-gray-400">
                 <Link href="/" className={cn("hover:text-primary transition-colors", location === "/" && "text-primary font-bold")}>Overview</Link>
                 <Link href="/reports" className="hover:text-primary transition-colors">Insights</Link>
                 <Link href="/help" className="hover:text-primary transition-colors">Documentation</Link>
               </div>
               
-              <Button variant="ghost" size="icon" className="text-gray-500 hover:text-primary hover:bg-blue-50">
+              <ThemeToggle />
+              
+              <Button variant="ghost" size="icon" className="text-gray-500 hover:text-primary hover:bg-blue-50 dark:hover:bg-gray-800">
                 <Bell className="w-5 h-5" />
               </Button>
               
-              <div className="h-8 w-[1px] bg-gray-200 mx-2" />
+              <div className="h-8 w-[1px] bg-gray-200 dark:bg-gray-800 mx-2" />
               
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs">
+                <div className="w-8 h-8 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary font-bold text-xs">
                   JS
                 </div>
               </div>
@@ -97,7 +100,7 @@ export function Layout({ children }: LayoutProps) {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-100 py-6 mt-auto">
+      <footer className="bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 py-6 mt-auto">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center text-[12px] leading-relaxed text-gray-400">
             {/* Left column */}
