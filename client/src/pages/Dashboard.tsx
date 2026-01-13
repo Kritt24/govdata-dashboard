@@ -53,20 +53,20 @@ export default function Dashboard() {
       <div className="w-full bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
         <div className="max-w-[1200px] mx-auto px-6 py-12">
           <div className="max-w-3xl">
-            <h2 className="text-2xl font-serif font-bold text-gray-900 dark:text-gray-100 mb-6 tracking-tight">
-              A Unified Perspective on National Identity Data
+            <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-gray-100 mb-6 tracking-tight">
+              Welcome to Sanrachna
             </h2>
-            <div className="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed text-lg font-normal">
+            <div className="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed text-lg font-normal text-justify">
               <p>
-                Sanrachna serves as the definitive analytics gateway for UIDAI, transforming complex enrolment and update datasets into actionable geographic and biometric insights. By synthesizing demographic trends and authentication patterns across India's states and districts, the platform provides a high-resolution view of the nation's digital identity landscape.
+                Sanrachna is a data-driven platform that visualizes Aadhaar enrolment and identity updates across India. It brings together insights on enrolment, demographics, and biometric updates to show how identity data evolves across regions and population groups.
               </p>
               <p>
-                Engineered for precision and clarity, this dashboard supports critical decision-making through real-time visualization of biometric updates and enrolment metrics. Whether monitoring urban adoption or rural accessibility, Sanrachna empowers administrators and citizens alike to understand the evolution of India's foundational identity system.
+                The platform enables exploration of trends across states and districts, helping identify patterns, coverage gaps, and areas requiring administrative attention through intuitive maps and charts.
               </p>
             </div>
             <div className="mt-8 pt-8 border-t border-gray-50 dark:border-gray-800">
               <p className="text-primary font-serif italic text-xl tracking-tight">
-                "Discover patterns. Understand change. Plan better — with Sanrachna."
+                Discover patterns. Understand change. Plan better — with Sanrachna.
               </p>
             </div>
           </div>
