@@ -34,21 +34,32 @@ export function Layout({ children }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
             {/* Left: Branding */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 py-2">
               <Link href="/">
-                <div className="flex items-center gap-3 cursor-pointer group">
-                  <div className="w-10 h-10 bg-white border border-gray-100 rounded-full flex items-center justify-center shadow-sm">
+                <div className="flex flex-col gap-1.5 cursor-pointer group">
+                  {/* Top Line: Flag and text */}
+                  <div className="flex items-center gap-2">
+                    <img 
+                      src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" 
+                      alt="Indian Flag"
+                      className="h-3 w-auto" 
+                    />
+                    <span className="text-[10px] uppercase tracking-[0.1em] text-gray-500 font-bold whitespace-nowrap">Government of India</span>
+                  </div>
+                  
+                  {/* Bottom Line: National Emblem and UIDAI Logo */}
+                  <div className="flex items-center gap-3">
                     <img 
                       src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" 
-                      alt="Emblem"
-                      className="w-6 h-6" 
+                      alt="National Emblem"
+                      className="h-9 w-auto" 
                     />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-bold">Government of India</span>
-                    <h1 className="text-lg font-serif font-bold text-secondary leading-none mt-1">
-                      UIDAI <span className="text-primary">Analytics</span>
-                    </h1>
+                    <div className="h-6 w-[1px] bg-gray-200" />
+                    <img 
+                      src="https://upload.wikimedia.org/wikipedia/en/c/cf/Aadhaar_Logo.svg" 
+                      alt="UIDAI Aadhaar Logo"
+                      className="h-8 w-auto" 
+                    />
                   </div>
                 </div>
               </Link>
