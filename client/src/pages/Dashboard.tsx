@@ -51,13 +51,6 @@ export default function Dashboard() {
       </div>
 
       <div className="max-w-[1200px] mx-auto px-6 w-full pt-12 relative z-10">
-        <div className="space-y-4 mb-8 text-center">
-          <RoleSelector currentRole={role} onRoleChange={(r) => setRole(r as Role)} />
-          <p className="text-xs text-gray-400 font-medium">
-            Select a perspective to view insights tailored for different audiences.
-          </p>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {metrics?.map((metric, index) => (
             <motion.div

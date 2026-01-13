@@ -3,6 +3,14 @@ import { Globe, ShieldCheck, Fingerprint, LogOut, Bell } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { useRoleStore, type Role } from "@/hooks/use-role";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ChevronDown, User, Shield, Briefcase } from "lucide-react";
 
 import bannerLogo from "@assets/WhatsApp_Image_2026-01-12_at_9.57.13_PM_1768295977407.jpeg";
 
@@ -12,6 +20,15 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   const [location] = useLocation();
+  const { role, setRole } = useRoleStore();
+
+  const perspectives = [
+    { id: "Government Official", icon: Briefcase },
+    { id: "Citizen", icon: User },
+    { id: "Admin (Demo)", icon: Shield },
+  ];
+
+  const currentPerspective = perspectives.find(p => p.id === role) || perspectives[0];
 
   return (
     <div className="min-h-screen flex flex-col font-sans relative">
@@ -75,6 +92,30 @@ export function Layout({ children }: LayoutProps) {
               </div>
               
               <ThemeToggle />
+              
+              <div className="h-8 w-[1px] bg-gray-200 dark:bg-gray-800 mx-2" />
+
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                    <currentPerspective.icon className="w-4 h-4" />
+                    <span className="text-sm font-medium">{role}</span>
+                    <ChevronDown className="w-4 h-4 opacity-50" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  {perspectives.map((p) => (
+                    <DropdownMenuItem 
+                      key={p.id} 
+                      onClick={() => setRole(p.id as Role)}
+                      className={cn("flex items-center gap-2 cursor-pointer", role === p.id && "bg-blue-50 dark:bg-blue-900/20 text-primary font-bold")}
+                    >
+                      <p.icon className="w-4 h-4" />
+                      {p.id}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
               
               <Button variant="ghost" size="icon" className="text-gray-500 hover:text-primary hover:bg-blue-50 dark:hover:bg-gray-800">
                 <Bell className="w-5 h-5" />
