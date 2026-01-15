@@ -217,22 +217,27 @@ export default function MetricDetail() {
             </Card>
 
             {!isCitizen && (
-              <Card className="bg-gray-900 text-white overflow-hidden border-0 shadow-2xl">
+              <Card className="overflow-hidden">
                 <CardHeader className="flex flex-row items-center gap-4">
-                  <div className="p-2 bg-gray-800 rounded-lg text-primary">
+                  <div className="p-2 bg-blue-100 rounded-lg text-blue-600">
                     <FileText className="w-5 h-5" />
                   </div>
-                  <CardTitle className="text-white">Policy Implications</CardTitle>
+                  <CardTitle>Policy Implications</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-300 leading-relaxed mb-4">
-                    {metric.policyImplications}
-                  </p>
-                  <div className="pt-4 border-t border-gray-800">
-                    <p className="text-xs text-gray-500 uppercase tracking-widest font-bold">Recommended Action</p>
-                    <p className="text-sm mt-1 text-primary italic font-medium">
-                      "Prioritize infrastructure expansion in regions showing higher than average biometric update failure rates."
+                  <div className="space-y-6">
+                    <p className="text-gray-700 leading-relaxed">
+                      {metric.policyImplications}
                     </p>
+                    <div className="pt-6 border-t border-gray-100 dark:border-gray-800">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                        <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold">Recommended Action</p>
+                      </div>
+                      <p className="text-sm text-blue-700 dark:text-blue-400 italic font-medium">
+                        "Prioritize infrastructure expansion in regions showing higher than average biometric update failure rates."
+                      </p>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
